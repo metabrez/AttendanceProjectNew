@@ -60,11 +60,24 @@ public class HomeController {
 	 * return modelAndView; }
 	 */
 
-	@GetMapping("/")
+	@GetMapping("/login")
+	public String login(){
+		return "login";
+	}
+
+	@GetMapping("/home")
 	public String homePage() {
 
 		/*attendanceServiceImpl.createAttendanceReportForEntry("2017-04-27");*/
 		return "home";
+
+	}
+
+	@GetMapping("/signup")
+	public String signup() {
+
+		/*attendanceServiceImpl.createAttendanceReportForEntry("2017-04-27");*/
+		return "signup";
 
 	}
 
@@ -85,22 +98,6 @@ public class HomeController {
 	public String attendanceList() {
 
 		return "studentAttendace";
-	}
-
-	@RequestMapping("/login")
-	public String login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, Model model) {
-
-		if (error != null) {
-
-			model.addAttribute("error", "Invalid UserName and Password");
-		}
-		if (logout != null) {
-			model.addAttribute("error", "You have been logout successfully");
-		}
-
-		
-		return "login";
 	}
 
 	@GetMapping("/studentDetails/students")
