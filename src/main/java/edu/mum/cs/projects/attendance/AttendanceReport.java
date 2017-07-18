@@ -22,12 +22,13 @@ import edu.mum.cs.projects.attendance.service.AttendanceService;
 public class AttendanceReport {
 
 	public static void main(String[] args) throws HibernateException, Exception {
-		ConfigurableApplicationContext context = SpringApplication.run(AttendanceReport.class, args);
+ConfigurableApplicationContext context =
+				SpringApplication.run(AttendanceReport.class, args);
 
-		AttendanceService service = context.getBean(AttendanceService.class);
+		/*AttendanceService service = context.getBean(AttendanceService.class);
 		
 		// The String argument is the start date of the block
-		service.createAttendanceReportForBlock("2017-06-26");
+		service.createAttendanceReportForBlock("2017-06-26");*/
 
 		System.out.println("\nAttendance Report App finished executing!");		
 	}

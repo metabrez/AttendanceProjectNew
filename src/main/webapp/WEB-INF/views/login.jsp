@@ -1,4 +1,6 @@
-<%@include file="/WEB-INF/views/template/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ include file="/WEB-INF/views/template/header.jsp" %>
 
 
 <div class="container-wrapper">
@@ -25,7 +27,11 @@
 
                 <input type="submit" value="Submit" class="btn btn-default"/>
 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <hr/>
+                <div class="form-group ">
+                        <a type="submit" class="btn btn-info btn-lg btn-block login-button" href="<c:url value="/signup" />">Sign up!</a>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
         </div>
     </div>

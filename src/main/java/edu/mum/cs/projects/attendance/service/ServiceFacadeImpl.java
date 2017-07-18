@@ -12,11 +12,11 @@ import edu.mum.cs.projects.attendance.domain.StudentAttendance;
 import edu.mum.cs.projects.attendance.domain.entity.Course;
 import edu.mum.cs.projects.attendance.domain.entity.Enrollment;
 import edu.mum.cs.projects.attendance.domain.entity.Student;
-import edu.mum.cs.projects.attendance.domain.entity.User;
+import edu.mum.cs.projects.attendance.domain.entity.security.User;
 
 @Service
 public class ServiceFacadeImpl implements IServiceFacade {
-
+/*
 	@Autowired
 	private StudentService studentService;
 	
@@ -26,8 +26,8 @@ public class ServiceFacadeImpl implements IServiceFacade {
 	@Autowired
 	private AttendanceService attendanceService;
 	
-	@Autowired
-	private UserService userService;
+//	@Autowired
+//	private UserService userService;
 	
 	@Override
 	public List<Course> getCourseListForStudent(String studentID) {
@@ -41,10 +41,10 @@ public class ServiceFacadeImpl implements IServiceFacade {
 		return null;
 	}
 
-	@Override
-	public User login(String userName, String password) {
-		return userService.login(userName, password);
-	}
+//	@Override
+//	public User login(String userName, String password) {
+//		return userService.login(userName, password);
+//	}
 
 	@Override
 	public List<Course> getCourseListForFaculty(int facultyID) {
@@ -107,6 +107,6 @@ public class ServiceFacadeImpl implements IServiceFacade {
 	public List<Student> findStudents(String id, String firstName, String lastName) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 }
