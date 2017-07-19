@@ -1,19 +1,25 @@
 package edu.mum.cs.projects.attendance.domain.entity.security;
 
-import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.mum.cs.projects.attendance.domain.entity.Faculty;
-import edu.mum.cs.projects.attendance.domain.entity.Role;
-import edu.mum.cs.projects.attendance.domain.entity.Student;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.Immutable;
-
-import edu.mum.cs.projects.attendance.domain.Identifiable;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import edu.mum.cs.projects.attendance.domain.Identifiable;
+import edu.mum.cs.projects.attendance.domain.entity.Role;
 
 @Entity
 @Immutable
@@ -29,18 +35,19 @@ public class User implements Identifiable<String>, UserDetails {
 	@Column(name="password", columnDefinition = "nvarchar(25)")
     private String password;
 
-	@OneToOne
 	@JoinColumn(name="studentId", columnDefinition = "nvarchar(50)")
-	private Student student;
+	private int studentId;
 	
-	@OneToOne
 	@JoinColumn(name="facultyId", columnDefinition = "int")
-	private Faculty faculty;
+	private int facultyId;
+	
+	@JoinColumn(name="roleId", columnDefinition = "int")
+	private int roleId;
 	
 	@OneToOne
-	@JoinColumn(name="roleId", columnDefinition = "int")
+	@Transient
 	private Role role;
-
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -69,21 +76,31 @@ public class User implements Identifiable<String>, UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
 
-	public Student getStudent() {
-		return student;
+	public int getStudentId() {
+		return studentId;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
 
-	public Faculty getFaculty() {
-		return faculty;
+	public int getFacultyId() {
+		return facultyId;
 	}
 
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
+	public void setFacultyId(int facultyId) {
+		this.facultyId = facultyId;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	public Role getRole() {

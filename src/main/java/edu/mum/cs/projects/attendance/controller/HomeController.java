@@ -173,6 +173,12 @@ public class HomeController {
 		return "studentAttendance";
 		
 	}
+	
+	@GetMapping("/createUser")
+	public String createUser(){
+		
+		return "createUser";
+	}
 	/*
 	 * public String addStudent(Model model){
 	 * 

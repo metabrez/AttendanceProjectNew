@@ -61,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable().cors().disable()
                 .formLogin()
+                
                 .defaultSuccessUrl("/home")
                 .failureUrl("/login?error")
                 .loginPage("/login").permitAll()
@@ -74,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("password")
+        auth.inMemoryAuthentication().withUser("t").password("t")
                 .roles("USER"); //This is in-memory authentication
 //         auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
     }

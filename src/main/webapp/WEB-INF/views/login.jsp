@@ -29,7 +29,7 @@
 
                 <hr/>
                 <div class="form-group ">
-                        <a type="submit" class="btn btn-info btn-lg btn-block login-button" href="<c:url value="/signup" />">Sign up!</a>
+                        <a type="submit" class="btn btn-info btn-lg btn-block login-button" href="<c:url value="/createUser" />">Sign up!</a>
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>

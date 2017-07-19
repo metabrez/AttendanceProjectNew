@@ -5,7 +5,7 @@
     <div class="container">
         <div id="login-box">
             <h2>Login with Username and Password.</h2>
-
+<%-- 
             <div class="bg-danger" th:if="${param.error}">
                 Invalid username and secret.
             </div>
@@ -37,9 +37,9 @@
 
             <div class="form-group ">
                 <a type="submit" class="btn btn-info btn-lg btn-block login-button" th:href="@{/signup}">Sign up!</a>
-            </div>
+            </div> --%>
 
-            <%-- <c:if test="${not empty msg}">
+            <c:if test="${not empty msg}">
                  <div class="msg">${msg}</div>
              </c:if>
 
@@ -59,7 +59,7 @@
                  <input type="submit" value="Submit" class="btn btn-default"/>
 
                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-             </form>--%>
+             </form>
         </div>
     </div>
 </div>
