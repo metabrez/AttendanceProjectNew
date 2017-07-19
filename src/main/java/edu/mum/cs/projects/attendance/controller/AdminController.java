@@ -11,51 +11,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.cs.projects.attendance.domain.entity.security.User;
 import edu.mum.cs.projects.attendance.service.UserService;
 
 @Controller
 public class AdminController {
-	
-	
+
 	@Autowired
 	UserService userService;
-	
-	@RequestMapping(value="/createUser", method=RequestMethod.POST)
-	public String createUser(@ModelAttribute ("user") User user){
-		
-		if(userService.createUser(user)!=null){
-			return "redirect:/userInfo";	
+
+	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
+	public String createUser(@ModelAttribute("user") User user) {
+
+		if (userService.createUser(user) != null) {
+			return "redirect:/userInfo";
 		} else {
 			return "error";
 		}
-			
+
 	}
-	
+
 	@GetMapping("/userInfo")
-	public String userInfo(Model model){
+	public String userInfo(Model model) {
 		List<User> userList = userService.findAllUser();
 		model.addAttribute("userList", userList);
 		return "userInfo";
 	}
-	
-	
-	
-	
+
 	@GetMapping("/userInfo/edit/{id}")
-	public String getUserInfoEdit(Model model, @PathVariable("id") String userId){
+	public String getUserInfoEdit(Model model, @PathVariable("id") String userId) {
 		User user = userService.getUserById(Integer.parseInt(userId));
-		
+
 		System.out.println(user.getUserName());
-		
+
 		model.addAttribute("user", user);
-		return "updateUser";	
-	
+		return "updateUser";
+
 	}
-	
+
 	@PostMapping("/updateUser")
-	public String updateUser(@ModelAttribute("user")User user){
+	public String updateUser(@ModelAttribute("user") User user) {
 		System.out.println("user is going to be updated.");
 		System.out.println("user name is: " + user.getUserName());
 		userService.updateUser(user);
@@ -63,4 +60,18 @@ public class AdminController {
 		return "redirect:/userInfo";
 	}
 
+	@GetMapping(value = "/search")
+	public String searchByName(Model model, @RequestParam("userName") String userName) {
+		System.out.println("searcing: "+userName);
+		User user = userService.findByUserName(userName);
+		if(user == null){
+			return "error";
+		}
+		System.out.println("-------------Searching user------------");
+		System.out.println(user.getUserName());
+		model.addAttribute("user", user);
+
+		return "searchView";
+
+	}
 }

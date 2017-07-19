@@ -5,19 +5,16 @@
 		<div id="login-box">
 
 			<h2>User Details Information</h2>
-			<form action="<c:url value="/search"/>" method="get">
-				<div>
+			<!-- <div>
 
-					Search User: <input type="text" name="userName" id="userName" placeholder="Search..">
-					<button type="submit" value="">search</button>
+				Search User<input type="text" name="search" placeholder="Search.."><button type="submit" value="{/search/{userName}}">search</button>
+				
 
-
-				</div>
-			</form>
-			<div>
-
-				<button type="button" class="btn btn-primary">Create User</button>
 			</div>
+ -->
+			<!-- <div>
+				<button type="button" class="btn btn-primary">Create User</button>
+			</div> -->
 
 			<table class="table table-striped table-hover" border="1">
 
@@ -32,7 +29,7 @@
 					</tr>
 				</thead>
 
-				<c:forEach items="${userList}" var="user">
+				<%-- <c:forEach items="${user}" var="user"> --%>
 
 					<tr>
 						<td>${user.userName}</td>
@@ -40,16 +37,16 @@
 						<td>${user.roleId}</td>
 						<td>${user.userId}</td>
 
-						<td><a
+						<%-- <td><a
 							href="<spring:url value="/userInfo/edit/${user.userId}"/>"> <span
 								class="glyphicon glyphicon-pencil"></span>
 						</a></td>
 						<td><a
 							href="<spring:url value="/userInfo/delete/${user.userId}" />">
 								<span class="glyphicon glyphicon-remove"></span>
-						</a></td>
+						</a></td> --%>
 					</tr>
-				</c:forEach>
+				<%-- </c:forEach> --%>
 
 			</table>
 

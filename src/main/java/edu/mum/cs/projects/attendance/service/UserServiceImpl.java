@@ -34,7 +34,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int updateUser(User user) {
 		
-		return userRepository.userUpdate(user.getUserId(),user.getUserName(), user.getPassword(), user.getRoleId(), user.getStudentId(), user.getFacultyId());
+		return userRepository.userUpdate(Integer.valueOf(user.getUserId()),user.getUserName(), user.getPassword(), Integer.valueOf(user.getRoleId()), Integer.valueOf(user.getStudentId()), Integer.valueOf(user.getFacultyId()));
+	}
+	@Override
+	public User findByUserName(String userName) {
+		return userRepository.findByUserName(userName);
+		
 	}
 
 }
